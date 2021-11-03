@@ -1,0 +1,399 @@
+Collections : Set 
+
+	1. Set is a collection of simillar elements .
+
+	2. Size of the set can grow or reduce  dynamically based on run time requirement .
+
+	3. Set will not accept duplicate elemets . 
+
+	4. Set will not maintain insertion order .
+
+	5. Salesforce has predefined Apex class called Set .This class contains methods 
+	   required to support the operations on the set .
+
+	6. Syntax :  
+
+		Set<DataType> setName =new Set<DataType>();
+
+		or 
+
+		Set<DataType> setName=new Set<DataType>(List/Set) ;
+
+
+		Example :
+
+		1. Set<Integer> ages=new Set<Integer>();
+
+		2. Set<String> names=new Set<String>();
+
+		3. Set<Decimal> salaries=new Set<Decimal>();
+
+		4. Set<Account> accs=new Set<Account>();
+
+		5. Set<Contact> cons=new Set<Contact>();
+
+
+	7.Methods : 
+
+		a. add(ele):  This method is used to add new elements into the set .
+
+			Example :
+
+			Set<Integer> ages=new Set<Integer>();
+
+			ages.add(90);
+		
+			ages.add(30);
+
+			ages.add(10);
+
+			ages.add(90);
+
+			System.debug(ages); //  {10,30,90 }
+
+		b. addAll(set/list) : This method is used to add list /set of elements to a set .
+
+			Example :
+
+			List<Integer> values =new List<Integer>{10,90,30,40};
+
+			Set<Integer> ages=new Set<Integer>();
+
+			ages.add(10);
+
+			ages.add(80);
+
+			ages.addAll(values); // All the elements in the values are added to ages.
+
+			System.debug(ages);  // { 10,30,40,80,90}
+
+
+		c. remove(ele) : This method is used to remove given element from the set.
+
+			Example : 
+
+			Set<Integer> ages=new Set<Integer>();
+
+			ages.add(10);
+		
+			ages.add(20);
+
+			ages.add(30);
+
+			System.debug(ages); // {10,20,30 }
+
+			ages.remove(20);
+
+			System.debug(ages); // {10,30 }
+
+			ages.remove(10); 
+
+			System.debug(ages); // {30}
+
+
+		d. removeAll(list/set) : This method is used to remove list or set of elements from the set.
+
+
+			List<Integer> values=new List<Integer>{10,90,40};
+
+			Set<Integer> ages=new Set<Integer>();
+	
+			ages.add(10);
+
+			ages.add(30);
+
+			ages.add(90);
+
+			ages.add(50);
+
+			System.debug(ages); // {10,30,50,90 }
+
+			ages.removeAll(values); // All the elements which are in values ,remove them 
+						    from the set ages.
+
+			System.debug(ages); // { 30,50}
+
+
+		e. clear(): This method will remove all the elements from the set .
+		
+			Set<Integer> ages=new Set<Integer>();
+	
+			ages.add(10);
+
+			ages.add(30);
+
+			ages.add(90);
+
+			ages.add(50);
+
+			System.debug(ages); // { 10,30,90,50}
+
+			ages.clear();
+
+			System.debug(ages); {}
+
+			
+		f. size()  : This will return  count of no of elements in the set .
+
+			Set<Integer> ages=new Set<Integer>();
+	
+			ages.add(10);
+
+			ages.add(30);
+
+			ages.add(90);
+
+			ages.add(50);
+
+			Integer count= ages.size(); 
+
+			System.debug(count) ;//  4
+
+
+		g. contains(ele) : This method will return true ,if the set contains the given element.
+
+			Set<Integer> ages=new Set<Integer>();
+	
+			ages.add(10);
+
+			ages.add(30);
+
+			ages.add(90);
+
+			ages.add(50);
+
+			System.debug(ages); // {10, 30,50,90}
+
+			Boolean flag1 =ages.contains(10); 
+ 
+			System.debug(flag1); // true 
+
+			Boolean flag2 =ages.contains(80); // false 
+
+			System.debug(flag2); // false
+
+
+		h. containsAll(set/list) : This method will return if all the elements in the set/list are 
+					   are available 
+
+			
+			List<Integer> values=new List<Integer>{10,40,90};
+
+			Set<Integer> ages=new Set<Integer>();
+	
+			ages.add(10);
+
+			ages.add(30);
+
+			ages.add(90);
+
+			ages.add(50);
+
+			System.debug(ages); // {10,30,50,90 }
+
+			Boolean flag1= ages.containsAll(values); 
+
+			System.debug(flag1);// false 
+
+			
+			Set<Integer> myData=new Set<Integer>{10,30};
+
+			Boolean flag2=ages.containsAll(myData);
+
+			System.debug(flag2); // true
+
+
+		i. retainAll(set/list): This will retain the common elements in the set  and given list/set.
+			
+
+
+			List<Integer> values=new List<Integer>{10,40,90};
+
+			Set<Integer> ages=new Set<Integer>();
+	
+			ages.add(10);
+
+			ages.add(30);
+
+			ages.add(90);
+
+			ages.add(50);
+
+			System.debug(ages); // {10,30,50,90 }
+
+			ages.retainAll(values); 
+
+			System.debug(ages); // {10,90}
+
+
+			
+		j. isEmpty() : This will return true if the set is empty .
+
+			Set<Integer> ages=new Set<Integer>();
+
+			System.debug(ages.isEmpty()); // true 
+
+			Set<Integer> values ;
+
+			values.isEmpty(); // error  null pointer exception
+
+
+
+Example :
+
+	1. Create a set  of citynames  and elements to it .
+
+		Set<String> cityNames=new Set<String>();
+
+		cityNames.add('Hyd');
+
+		CityNames.add('bBan');
+
+	2. create a set of companyNames and add elements to it .
+
+		Set<String> companies=new Set<String>();
+		
+		companies.add('Wipro');
+
+		companies.add('TCS');
+
+		companies.add('Wipro');
+
+	3. create a set of Phone no's  and add elements to it .
+
+		Set<String> phones =new Set<String>();
+
+		phones.add('1234');
+
+		phones.add('2222');
+
+		phones.add('3333');
+
+
+	4. create a set of account and add elements to it .
+
+		Set<Account> accs=new Set<Account>();
+
+		Account a1=new Account();
+
+		a1.name='Wipro';
+
+		a1.Phone='123';
+
+		accs.add(a1);
+
+	5. Create a set of contacts and add elements to it .
+
+		Set<Contact>  cons=new Set<Contact>();
+
+		Contact c1=new Contact();
+
+		c1.LastName='Myla';
+
+		c1.FirstName='Satish';
+
+		cons.add(c1);
+
+	6. a. Create  list of ages and add  following values  ( 10,30,40,50,20,40,10 )
+
+	   b. Create a set of values  
+		
+ 	   c. Take one by one element from the list of ages and if ages is more than 30 
+	      then add it set of values .
+
+		List<Integer>  ages =new List<Integer>{ 10,30,40,50,20,40,10};
+
+		Set<Integer> valies =new Set<Integer>();
+
+		for(Integer i=0; i< ages.size() ;i++){
+			
+			Integer x=ages.get(i);
+
+			if(x > 30 ){
+
+				values.add(x);
+			}
+		}
+
+
+	7. a. Create a List of Account records .
+
+	   b. Create a List to store Account names .
+
+	   c. Create a set to store Account Phone .
+
+	   d. Take one by one account and add account name in list of Accountnames
+
+	   e. Take one by one Account and add phone no in the set of phone no's.
+
+
+	  	Account a1=new Account(Name='Wipro',Phone='1234');
+
+		Account a2=new Account(Name='TCS',Phone='3456');
+
+		Account a3=new Account(Name='Dell',Phone='4567');
+
+		List<Account> accs=new List<Account>{a1,a2,a3};
+
+		List<String> accNames=new List<String>();
+
+		Set<String> phones =new Set<String>();
+
+
+		for( Account  a : accs) {
+		
+			accNames.add(a.name);
+
+			phones.add(a.phone);
+
+		}
+
+		System.debug(accNames); // { wipro, TCS,Dell}
+
+		System.debug(phones); // { 1234,3456,4567}
+
+
+		
+
+	8. a.Create  a wrapper class  ProductInfo  with prodName, price, prodCode .
+
+	   b.Create  a List to store all the product names .
+
+	   c.Create a Set to store all the productCodes .
+
+	
+		1.  create a wrapper class 
+
+			public class ProductInfo {
+
+				public String prodName ;
+
+				public String prodCode;
+
+				public Decimal price;
+			}
+
+		2. Create a List of ProductInfo and  class 
+
+			List<ProductInfo> products =new List<ProductInfo>();
+
+			ProductInfo p1=new ProductInfo();
+			p1.prodName='LG';
+
+			p1.prodCode='LG01';
+
+			p1.price=10000;
+
+			products.add(p1);
+
+		3. List<String> prodNames =new List<String>();
+
+		4. Set<String> codes =new Set<String>();
+
+			for(ProductInfo p: products){
+
+				prodNames.add(p.prodName);
+
+				codes.add(p.prodCode);
+			}
+	  
